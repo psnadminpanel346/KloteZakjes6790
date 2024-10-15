@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+
+    <style>
+        /* General Reset and Layout */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 20px;
+            height: 100vh;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar ul li a.active {
+            background-color: #3498db;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            background-color: #fff;
+        }
+
+        /* Section Headings */
+        h1, h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* Form Styling */
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .form-group input[type="text"] {
+            width: 48%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .form-group .add-redeem-input {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-group .add-redeem-input input[type="text"] {
+            width: 75%;
+        }
+
+        .form-group button {
+            background-color: #2ecc71;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .form-group button:hover {
+            background-color: #27ae60;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Admin Panel</h2>
+            <ul>
+                <li><a class="" href="./index.html">See Redeem codes</a></li>
+                <li><a class="active" href="./handling_dashboard.html">Manage Redeem codes</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <!-- Change Redeem Status Section -->
+            <h1>Change Redeem Status</h1>
+            <div class="form-group">
+                <input type="text" id="redeem-code" placeholder="Enter Redeem Code">
+                <input type="text" id="status" placeholder="Enter Status (1, 2 or 3)">
+            </div>
+            <button class="submit-btn" id="update-status-btn">Update Status</button><br><br>
+
+            <!-- Add a Redeem Code Section -->
+            <h1>Add a Redeem Code</h1>
+            <div class="form-group">
+                <input type="text" id="game-name" placeholder="Enter Game Name">
+            </div>
+            <div id="add-redeem-container">
+                <div class="form-group add-redeem-input">
+                    <input type="text" id="redeem-code-1" placeholder="Enter Redeem Code">
+                    <button type="button" onclick="addRedeemField()">+</button>
+                </div>
+            </div>
+            <button class="submit-btn" id="submit-redeem-btn">Submit</button>
+        </div>
+    </div>
+
+    <!-- Include the external JavaScript file -->
+    <script type="module" src="handling.js"></script>
+</body>
+</html>
