@@ -73,6 +73,36 @@ async function updateRedeemStatus(redeemCode, status) {
         alert("An error occurred while updating the status.");
     }
 }
+// Function to add redeem codes in db2
+async function addRedeemCodes(gameName, redeemCodes) {
+    if (!gameName || redeemCodes.length === 0) {
+        alert("Game name and at least one redeem code are required.");
+        return;
+    }
+
+    const dbRef = ref(db2);
+    try {
+        const snapshot = await get(child(dbRef, gameName));
+        if (snapshot.exists()) {
+            // Game exists, add new redeem codes as children
+            redeemCodes.forEach(async (code) => {
+                await set(ref(db2, `${gameName}/${code}`), true);
+            });
+            location.reload();
+        } else {
+            // Game doesn't exist, create new game entry and add redeem codes
+            const updates = {};
+            redeemCodes.forEach((code) => {
+                updates[code] = true;
+            });
+            await set(ref(db2, gameName), updates);
+            location.reload();
+        }
+    } catch (error) {
+        console.error("Error adding redeem codes:", error);
+        alert("An error occurred while adding redeem codes.");
+    }
+}
 
 
 
