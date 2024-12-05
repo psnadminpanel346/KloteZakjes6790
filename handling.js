@@ -103,3 +103,5 @@ document.getElementById('update-status-btn').addEventListener('click', async () 
 
     await updateRedeemStatus(redeemCode, status, imageUrl);
 });
+
+window.addRedeemField = addRedeemField;
